@@ -26,7 +26,6 @@ c. Invalid CAPTCHA error displayed next to Captcha element.
 Make sure you have the following installed:
 
 - [.NET Core SDK](https://dotnet.microsoft.com/download) - version 4.8.09032
-- Other specific requirements if any
 
 ## Project Setup
 
