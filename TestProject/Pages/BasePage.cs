@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
-using TestProject.Utils;
 
 
 namespace TestProject.Pages
@@ -14,6 +13,7 @@ namespace TestProject.Pages
             this.driver = driver;
             this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(Config.MaximumWaitTime));
         }
+
         public IWebElement WaitForElementToBeVisible(By locator)
         {
             return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(locator));
@@ -33,6 +33,7 @@ namespace TestProject.Pages
         {
             return new List<IWebElement>(driver.FindElements(locator));
         }
+
         public void Click(By locator)
         {
             WaitForElementToBeVisible(locator);
@@ -57,6 +58,5 @@ namespace TestProject.Pages
             SelectElement select = new SelectElement(selectStateElement);
             select.SelectByText(text);
         }
-
     }
 }
