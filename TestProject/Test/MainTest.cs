@@ -34,31 +34,30 @@ namespace TestProject.Test
 
             string firstUrl = googlePage.GetUrlSearchByIndex(0);
 
-            Assert.That(firstUrl, Is.EqualTo(Config.HchbUrl));
+            Assert.That(firstUrl, Is.EqualTo(Config.HchbUrl), "The URL not correspond with the HCHB page");
             googlePage.GotoHCHBPage();
 
             string telephone = hchBPage.GetElementHeaderTextByIndex(1);
             string mail = hchBPage.GetElementHeaderTextByIndex(3);
 
-            Assert.That(telephone, Is.EqualTo("866-535-4242"));
-            Assert.That(mail, Is.EqualTo("info@hchb.com"));
+            Assert.That(telephone, Is.EqualTo("866-535-4242"), "The Telephone is not the same");
+            Assert.That(mail, Is.EqualTo("info@hchb.com"), "The email is not the same");
 
             hchBPage.RequestADemo();
             string currentUrl = hchBPage.GetCurrentUrl();
 
-            Assert.That(currentUrl, Is.EqualTo("https://hchb.com/request-demo/"));
+            Assert.That(currentUrl, Is.EqualTo("https://hchb.com/request-demo/"), "The URL is different than the expected");
 
             hchBPage.FillForm(user);
-
             hchBPage.Submit();
 
             string messageError = hchBPage.GetMessageErrorText();
             string servicesOfferedMessageError = hchBPage.GetServicesOfferedErrorText();
             string captchaMessageError = hchBPage.GetCaptchaErrorText();
 
-            Assert.That(messageError, Is.EqualTo("Please correct the errors below:"));
-            Assert.That(servicesOfferedMessageError, Is.EqualTo("This field is required"));
-            Assert.That(captchaMessageError, Is.EqualTo("Invalid CAPTCHA"));
+            Assert.That(messageError, Is.EqualTo("Please correct the errors below:"), "Message Error is different");
+            Assert.That(servicesOfferedMessageError, Is.EqualTo("This field is required"), "Offered message error is different");
+            Assert.That(captchaMessageError, Is.EqualTo("Invalid CAPTCHA"), "Invalid CAPTCHA is not showing as expected");
         }
     }
 }
